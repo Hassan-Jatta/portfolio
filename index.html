@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de [Votre Prénom Nom] — Étudiant Master Informatique, spécialités Data, Dev, SI & Gestion de projet." />
+  <title>Hassan Jatta — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="ressources/css/style.css" />
+</head>
+<body>
+
+  <!-- ─── TOP NAV ──────────────────────────────────────────── -->
+  <header class="topnav">
+    <div class="container topnav__inner">
+      <a href="index.html" class="topnav__logo">Hassan Jatta</a>
+      <nav class="topnav__links">
+        <a href="#about">À propos</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section id="hero" class="section section--hero">
+    <div class="hero-bg-grid" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <span class="eyebrow">Master MIAGE · Systèmes d'information / Développement / Data </span>
+      <h1 class="hero-title">
+        Hassan<br />
+        <span class="accent">Jatta</span>
+      </h1>
+      <!--
+      <p class="hero-sub">
+        Étudiant
+      </p>
+      -->
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn--primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn--ghost">Me contacter</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+  <section id="about" class="section">
+    <div class="container">
+      <p class="section-eyebrow">Qui suis-je ?</p>
+      <h2 class="section-title">À propos</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Étudiant en Master MIAGE passionné d'informatique, je développe des compétences transversales en
+            <strong>systèmes d'information</strong>, <strong>développement logiciel</strong>,
+            <strong>analyse de données</strong> et <strong>gestion de projet</strong>.
+          </p>
+          <p>
+            Mon approche est orientée résultat : comprendre un problème métier, structurer
+            les données, puis produire des livrables visuels et actionnables.
+          </p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-tag">Java</div>
+          <div class="skill-tag">C</div>
+          <div class="skill-tag">Python</div>
+          <div class="skill-tag">SQL</div>
+          <div class="skill-tag">R</div>
+          <div class="skill-tag">Power BI</div>
+          <div class="skill-tag">GitHub</div>
+          <div class="skill-tag">Méthodologies agiles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROJECTS GALLERY ──────────────────────────────────── -->
+  <section id="projects" class="section section--light">
+    <div class="container">
+      <p class="section-eyebrow">Réalisations</p>
+      <h2 class="section-title">Projets</h2>
+
+      <!-- Filtres par catégorie -->
+      <!-- 
+      <div class="filter-bar" role="group" aria-label="Filtrer les projets">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="data">Data</button>
+        <button class="filter-btn" data-filter="dev">Développement</button>
+        <button class="filter-btn" data-filter="si">Système d'info</button>
+        <button class="filter-btn" data-filter="gp">Gestion de projet</button>
+      </div>
+      -->
+
+      <!-- Grille de projets -->
+      <div class="projects-grid">
+
+        <!-- ── Projet 1 : Power BI ── -->
+        <a href="projets/reporting-powerbi.html" class="project-card" data-category="data">
+          <div class="project-card__thumb">
+            <!-- Remplacer par : <img src="assets/images/thumb-powerbi.png" alt="Aperçu Power BI" /> -->
+            <div class="thumb-placeholder">
+              <!-- <span class="thumb-placeholder__icon">📊</span> -->
+            </div>
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--data">Data</span>
+              <span class="tag tag--tool">Power BI</span>
+            </div>
+            <h3 class="project-card__title">Reporting décisionnel</h3>
+            <p class="project-card__desc">
+              Modélisation en étoile et tableau de bord interactif à partir
+              d'un jeu de données open source.
+            </p>
+            <span class="project-card__cta">Voir le projet →</span>
+          </div>
+        </a>
+
+        <!-- ── Projet 2 : placeholder ── -->
+        <!--
+        <a href="#" class="project-card project-card--wip" data-category="dev" aria-disabled="true">
+          <div class="project-card__thumb">
+            <div class="thumb-placeholder">
+              <span class="thumb-placeholder__icon">💻</span>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag tag--dev">Dev</span>
+              <span class="tag tag--wip">En cours</span>
+            </div>
+            <h3 class="project-card__title">[Prochain projet]</h3>
+            <p class="project-card__desc">
+              Dupliquer ce bloc pour chaque nouveau projet.
+              Modifier <code>data-category</code> pour le filtrage.
+            </p>
+            <span class="project-card__cta">Bientôt disponible</span>
+          </div>
+        </a>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ───────────────────────────────────────────── -->
+  <section id="contact" class="section">
+    <div class="container contact-container">
+      <p class="section-eyebrow">Travaillons ensemble</p>
+      <h2 class="section-title">Contact</h2>
+      <p class="section-intro">
+        Disponible pour des opportunités d'alternance / stage en Île-de-France.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:hassjatta@gmail.com" class="contact-card">
+          <!-- <span class="contact-card__icon">✉️</span> -->
+          <span>hassjatta@gmail.com</span>
+        </a>
+        <a href="https://github.com/Hassan-Jatta" target="_blank" rel="noopener" class="contact-card">
+          <!-- <span class="contact-card__icon">🐙</span> -->
+          <span>github.com/hassan-jatta</span>
+        </a>
+        <a href="https://www.linkedin.com/in/hassan-jatta/" target="_blank" rel="noopener" class="contact-card">
+          <!-- <span class="contact-card__icon">💼</span> -->
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Hassan Jatta · Master MIAGE</p>
+  </footer>
+
+  <script src="ressources/js/main.js"></script>
+</body>
+</html>

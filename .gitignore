@@ -141,3 +141,15 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+.DS_Store
+Thumbs.db
+
+*.pbix
+*.csv
+*.xlsx
+*.bak
+
+*.psd
+*.ai
+*.fig

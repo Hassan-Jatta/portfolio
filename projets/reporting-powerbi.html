@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projet Power BI — Reporting Décisionnel sur données Kaggle. Modélisation en étoile, DAX, analyse commerciale et client." />
+  <title>Reporting Décisionnel · Power BI — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../ressources/css/style.css" />
+</head>
+<body class="project-page">
+
+  <!-- ─── TOP NAV ──────────────────────────────────────────── -->
+  <header class="topnav">
+    <div class="container topnav__inner">
+      <a href="../index.html" class="topnav__logo">← Retour aux projets</a>
+      <!-- Navigation interne au projet -->
+      <nav class="topnav__links topnav__links--project">
+        <a href="#intro">Introduction</a>
+        <a href="#modelisation">Modélisation</a>
+        <a href="#rapport">Rapport</a>
+        <a href="#conclusion">Conclusion</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── PROJECT HERO ─────────────────────────────────────── -->
+  <section id="intro" class="section section--project-hero">
+    <div class="hero-bg-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Projets</a>
+        <span>/</span>
+        <span>Reporting décisionnel</span>
+      </div>
+      <div class="project-hero-tags">
+        <span class="tag tag--data">Data</span>
+        <span class="tag tag--tool">Power BI</span>
+      </div>
+      <h1 class="project-hero__title">Conception d'un tableau de bord décisionnel sous Power BI </h1>
+    <!--
+      <p class="project-hero__sub">
+        De la donnée brute à un tableau de bord interactif :
+        modélisation en étoile, transformation ETL et rapport décisionnel multi-pages.
+      </p>
+      -->
+
+      <!-- KPIs du projet -->
+      <div class="project-kpis">
+        <div class="kpi">
+          <span class="kpi__value">5</span>
+          <span class="kpi__label">Tables de dimensions</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__value">9</span>
+          <span class="kpi__label">Mesures DAX</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__value">4</span>
+          <span class="kpi__label">Pages de rapport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTEXTE & PROBLÉMATIQUE ─────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="project-intro-grid">
+        <div class="intro-card">
+          <h3>Contexte</h3>
+          <p>
+            Dans le cadre de mon enseignement de <strong>Business Intelligence</strong>, j’ai analysé un jeu de données provenant du site <strong>Kaggle</strong>.
+            Ce dataset contient les données de ventes d’un hypermarché américain sur une période de <strong>4 ans</strong>.
+          </p>
+          <p>
+            L'objectif était de passer de données brutes et hétérogènes à un système de
+            reporting décisionnel.
+          </p>
+          <p>
+            Lien vers le dataset : https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting/data
+          </p>
+        </div>
+
+        <div class="intro-card">
+          <h3>Problématique</h3>
+          <p>
+            Comment structurer et visualiser un jeu de données complexe pour permettre
+            à des décideurs de <strong>suivre les performances commerciales</strong>,
+            <strong>comprendre le comportement client</strong> et
+            <strong>identifier les tendances clés</strong> en temps réel ?
+          </p>
+        </div>
+
+        <div class="intro-card">
+          <h3>Stack technique</h3>
+          <ul class="stack-list">
+            <li><span class="stack-badge">Power BI</span> Visualisation &amp; DAX</li>
+            <li><span class="stack-badge">Power Query</span> Transformation ETL</li>
+            <li><span class="stack-badge">Modèle en étoile</span> Conception du schéma</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MODÉLISATION ──────────────────────────────────────── -->
+  <section id="modelisation" class="section section--light">
+    <div class="container">
+      <p class="section-eyebrow">Architecture des données</p>
+      <h2 class="section-title">Modélisation en étoile</h2>
+
+      <div class="model-layout">
+        <div class="model-text">
+          <p>
+            Pour garantir des performances optimales et une structure claire, j'ai conçu un
+            <strong>schéma en étoile</strong> centré sur une table de faits
+            principale reliée à plusieurs tables de dimensions.
+          </p>
+
+          <div class="model-step">
+            <div class="model-step__num">1</div>
+            <div>
+              <h4>Nettoyage &amp; Transformation (Power Query)</h4>
+              <p>Gestion des doublons et des valeurs nulles, typage des colonnes,
+              normalisation des libellés.</p>
+            </div>
+          </div>
+          <div class="model-step">
+            <div class="model-step__num">2</div>
+            <div>
+              <h4>Table de faits — <code>Ventes</code></h4>
+                <p>
+                    Pivot central du schéma en étoile, cette table contient la métrique quantitative brute 
+                    Montant_Vente pour chaque ligne de transaction, ainsi que ses identifiants uniques 
+                    (ID_Commande, clé de ligne) et les clés étrangères la reliant aux différents axes d'analyse.
+                </p>
+            </div>
+          </div>
+          <div class="model-step">
+            <div class="model-step__num">3</div>
+            <div>
+              <h4>Tables de dimensions</h4>
+              <p>
+                <code>Client</code> · <code>Produit</code> · <code>Lieu</code> ·
+                <code>Temps</code> <code>Livraison</code> — Axes d'analyse métier.
+              </p>
+            </div>
+          </div>
+          <div class="model-step">
+            <div class="model-step__num">4</div>
+            <div>
+              <h4>Mesures DAX</h4>
+              <p>CA total, CA moyen par client, % du CA global, Nombre de clients, Nombre de commandes, Nombre de produits, Valeur du panier moyen,  Délai moyen de livraison, Fréquence d'achat moyenne par client.</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <figure class="schema-screenshot">
+          <img
+            src="../ressources/images/schema-etoile.png"
+            alt="Capture du modèle en étoile Power BI — Fact_Ventes reliée aux dimensions Date, Client, Produit et Région"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RAPPORT VISUEL ────────────────────────────────────── -->
+  <section id="rapport" class="section">
+    <div class="container">
+      <p class="section-eyebrow">Présentation du rapport</p>
+      <h2 class="section-title">Reporting final</h2>
+      <!--
+      <p class="section-intro">
+        Le rapport décisionnel est structuré en plusieurs pages thématiques,
+        chacune répondant à une question métier précise.
+      </p>
+      -->
+
+      <!-- ── Page 1 ── -->
+      <article class="report-page">
+        <div class="report-page__header">
+          <span class="page-num">Page 01</span>
+          <h3 class="report-page__title">Performance Commerciale</h3>
+        </div>
+        <div class="report-page__body">
+          <div class="report-page__meta">
+            <div class="meta-block">
+              <span class="meta-label">Objectif</span>
+                <p>
+                    Offrir une vue synthétique du chiffre d'affaires global et de son évolution
+                    dans le temps.
+                </p>
+            </div>
+            <div class="meta-block">
+              <span class="meta-label">Visuels inclus</span>
+              <ul>
+                <li>KPI cards : CA total, commandes, panier moyen</li>
+                <li>Courbe d'évolution annuelle du CA</li>
+              </ul>
+            </div>
+          </div>
+          <div class="report-page__visual">
+            <img src="../ressources/images/page1-performance.png" alt="Page Power BI – Performance Commerciale" loading="lazy" />
+          </div>
+          <div class="insight-block">
+            <span class="insight-label">Observation</span>
+            <p>
+              Avec un CA global de <strong>2,26 M$</strong> sur la période analysée (2015-2018),
+              on observe une forte croissance à partir de l'année 2016. 
+            </p>
+            <p>
+                <strong>Remarque : </strong> Le jeu de données initial comportant la <strong>date de commande</strong> 
+                et la <strong> date de livraison</strong>, j'ai fait le choix de calculer le CA à partir de la 
+                <strong> date de commande</strong>.
+            </p>
+            <p>
+                J'ai complété mon analyse par un tableau afin d'expliquer cette hausse soudaine.
+            </p>
+          </div>
+
+          <img src="../ressources/images/tableau.png" alt="Page Power BI – Tableau" loading="lazy" style="display: block; margin: 0 auto;" />
+            <p>
+              La croissance du chiffre d’affaires observée entre 2016 et 2018 est donc principalement liée à une augmentation 
+              du volume des ventes plutôt qu’à une hausse de la valeur des commandes. Le nombre de commandes 
+              est passé de <strong>1 019</strong> en 2016 à <strong>1 661</strong>  en 2018, soit une hausse de <strong>63 %</strong>, soutenu à la fois par une croissance de la clientèle (+21,7 %) et 
+              par une augmentation significative de la fréquence d’achat (+33,9 %). La valeur moyenne par commande 
+              étant demeurée relativement stable, la hausse du chiffre d’affaires s’explique essentiellement par 
+              une augmentation du nombre de transactions réalisées.
+            </p>
+        </div>
+      </article>
+
+      <!-- ── Page 2 ── -->
+      <article class="report-page">
+        <div class="report-page__header">
+          <span class="page-num">Page 02</span>
+          <h3 class="report-page__title">Analyse Client</h3>
+        </div>
+        <div class="report-page__body">
+          <div class="report-page__meta">
+            <div class="meta-block">
+              <span class="meta-label">Objectif</span>
+                <p>
+                    Décrypter les habitudes d'achat des consommateurs, 
+                    évaluer leur niveau de fidélité et analyser leur valeur moyenne pour orienter les stratégies de rétention.
+                </p>
+            </div>
+            <div class="meta-block">
+              <span class="meta-label">Visuels inclus</span>
+              <ul>
+                <li>KPI cards : Clients, CA moyen par client, fréquence d'achat moyenne</li>
+                <li>CA moyen par client selon les régions</li>
+              </ul>
+            </div>
+          </div>
+          <div class="report-page__visual">
+            <img src="../ressources/images/page2-client.png" alt="Page Power BI – Analyse Client" loading="lazy" />
+          </div>
+          <div class="insight-block">
+            <span class="insight-label">Observation</span>
+            <p>
+              Avec une fréquence d'achat moyenne de <strong>6,21 commandes</strong> par client et un chiffre d'affaires moyen 
+              par client s'élevant à <strong>2 852$</strong>, cet hypermarché s'appuie sur une base de clients récurrents (793 clients uniques au total) 
+              sur laquelle capitaliser par des programmes de fidélisation.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Page 3 (template) ── -->
+      <article class="report-page">
+        <div class="report-page__header">
+          <span class="page-num">Page 03</span>
+          <h3 class="report-page__title">Produits</h3>
+        </div>
+        <div class="report-page__body">
+          <div class="report-page__meta">
+            <div class="meta-block">
+              <span class="meta-label">Objectif</span>
+                <p>
+                    Analyser la performance du catalogue, identifier les catégories de produits dominantes et 
+                    isoler les meilleures ventes pour optimiser la stratégie d'approvisionnement.
+                </p>
+            </div>
+            <div class="meta-block">
+              <span class="meta-label">Visuels inclus</span>
+              <ul>
+                <li>KPI cards : Produits</li>
+                <li>Top 10 des produits par CA</li>
+                <li>Répartition du CA par catégorie de produits</li>
+              </ul>
+            </div>
+          </div>
+          <div class="report-page__visual">
+            <img src="../ressources/images/page3-produits.png" alt="Page Power BI – Produits" loading="lazy" />
+          </div>
+          <div class="insight-block">
+            <span class="insight-label">Observation</span>
+            <p>
+              Bien que le catalogue soit très diversifié avec <strong>1 893 produits</strong> actifs, la valeur financière est 
+              fortement concentrée. La catégorie Technology mène largement les débats avec <strong>827 456 $</strong> de chiffre 
+              d'affaires (devant les fournitures de bureau et l'ameublement). Ce segment est tiré par des 
+              produits à très forte valeur unitaire, à l'image du copieur <strong>Canon imageCLASS 2200 Advanced </strong>  
+              qui se classe premier du top 10. Une attention particulière doit donc être portée à la gestion des stocks de ces produits 
+              afin d'éviter toute rupture de stock qui impacterait le chiffre d'affaires global.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Page 4 (template) ── -->
+      <article class="report-page">
+        <div class="report-page__header">
+          <span class="page-num">Page 04</span>
+          <h3 class="report-page__title">Géographie & Logistique</h3>
+        </div>
+        <div class="report-page__body">
+          <div class="report-page__meta">
+            <div class="meta-block">
+              <span class="meta-label">Objectif</span>
+                <p>
+                    Cartographier la performance commerciale par territoire et évaluer l'efficacité logistique pour 
+                    détecter les opportunités d'expansion et les ralentissements opérationnels.
+                </p>
+            </div>
+            <div class="meta-block">
+              <span class="meta-label">Visuels inclus</span>
+              <ul>
+                <li>KPI cards : Clients, CA moyen par client, fréquence d'achat moyenne</li>
+                <li>CA moyen par client selon les régions</li>
+              </ul>
+            </div>
+          </div>
+          <div class="report-page__visual">
+            <img src="../ressources/images/page4-geographie-logistique.png" alt="Page Power BI – Géographie & Logistique" loading="lazy" />
+          </div>
+          <div class="insight-block">
+            <span class="insight-label">Observation</span>
+            <p>
+                Les délais de livraison sont extrêmement homogènes sur tout le territoire américain (oscillant entre 3,9 et 4,1 jours). Cela démontre une excellente maturité des partenaires 
+                logistiques de l'hypermarché, capables de maintenir la même qualité de service sur toutes les régions.
+            </p>
+            <p>
+                Le volume d'activité est très concentré dans les régions <strong>Ouest</strong> et <strong>Est</strong>, qui génèrent à eux deux plus de la moitié du CA total.
+                La zone <strong>Sud</strong> concentre <strong>17,21%</strong> du CA total, ce qui représente le plus petit volume d'activité du territoire. Pourtant, elle cache un 
+                profil de clientèle très haut de gamme avec un panier moyen de <strong>480,43$</strong> (contre <strong>447,52$ </strong> 
+                pour l'Ouest qui concentre <strong>31,4%</strong> du CA global), le tout avec une logistique parfaitement maîtrisée à 4 jours. Cet hypermarché a donc tout 
+                intérêt à y intensifier ses efforts marketing.
+            </p>
+              
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ─── CONCLUSION ───────────────────────────────────────── -->
+<section id="conclusion" class="section">
+  <div class="container" style="max-width: 720px;">
+    <p class="section-eyebrow">Bilan</p>
+    <h2 class="section-title">Conclusion</h2>
+    <p style="color: var(--c-text-body); line-height: 1.8;">
+      En traduisant 2,26 M$ de transactions brutes en insights stratégiques, cette étude de cas apporte des 
+      réponses concrètes aux défis de l'hypermarché : adapter l'infrastructure SI à la hausse du 
+      volume de commandes (+63 %), cibler le marketing sur la région Sud et sécuriser les stocks de 
+      la catégorie technologique. Au-delà de ces recommandations business, ce projet m'a permis de maîtriser 
+      la conception d'un modèle de données relationnel adapté à la BI, la logique de séparation faits / dimensions, 
+      ainsi que la rédaction de mesures DAX pour des indicateurs métier concrets.
+    </p>
+   
+  </div>
+</section>
+
+  <!-- ─── NAVIGATION ENTRE PROJETS ─────────────────────────── -->
+  <section class="section section--light">
+    <div class="container project-nav">
+      <a href="../index.html#projects" class="project-nav__back">← Tous les projets</a>
+      <a href="#" class="project-nav__next project-nav__next--disabled">Projet suivant →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Hassan Jatta · Master MIAGE</p>
+  </footer>
+
+  <script src="../ressources/js/main.js"></script>
+</body>
+</html>
